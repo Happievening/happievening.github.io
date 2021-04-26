@@ -11,11 +11,14 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
+        Happi的画板
         <nav>
             当前画笔颜色：
-            <li></li>
-            <div class="palette">
-                <ul>
+            <ul>
+                <li id="currentColor"></li>
+            </ul>
+            <div class="paletteBar">
+                <ul id="palette">
                     <li></li>
                     <li></li>
                     <li></li>
@@ -24,8 +27,7 @@
                     <li></li>
                 </ul>
             </div>
-            <aside id="currentDevice">当前设备：</aside>
-            <aside id="currentBrowser">当前浏览器：</aside>
+            <aside id="currentDevice">当前设备类型：</aside>
         </nav>
 
         <canvas id="mycanvas"></canvas>
@@ -43,6 +45,18 @@
                 console.log('onclick');
             };
             // 事件代理
+            var palette = document.querySelector('#palette');
+            var currentColor = document.querySelector('#currentColor');
+            palette.addEventListener('click', e => {
+                console.log(e.target);
+                // console.log(e.target);
+                currentColor.style.background = e.target.style.background;
+            });
+            //判断是否为移动端
+            var currentDevice = navigator.userAgent.match(/(iphone|ipad|android)/i);
+            document.querySelector('#currentDevice').innerHTML += currentDevice
+                ? '移动端-' + currentDevice[0]
+                : '桌面端';
         </script>
     </body>
 </html>
