@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+canvas {
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
+}
+
+canvas:hover {
+    cursor: crosshair;
+}
+
+.palette {
+    width: 200px;
+    border: 2px solid grey;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+ul li {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+li:nth-child(1) {
+    background-color: black;
+}
+
+li:nth-child(2) {
+    background-color: red;
+}
+
+li:nth-child(3) {
+    background-color: blue;
+}
+
+li:hover {
+    cursor: pointer;
+}
