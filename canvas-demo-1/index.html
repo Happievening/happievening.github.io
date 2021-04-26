@@ -11,16 +11,27 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <div class="palette">
-            <ul>
-                画笔颜色
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
+        <nav>
+            当前画笔颜色：
+            <li></li>
+            <div class="palette">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <aside id="currentDevice">当前设备：</aside>
+            <aside id="currentBrowser">当前浏览器：</aside>
+        </nav>
+
         <canvas id="mycanvas"></canvas>
         <script>
+            var userAgent = navigator.userAgent;
+
             var canvas = document.getElementById('mycanvas');
             console.log(canvas);
             // canvas.style.width = document.documentElement.clientWidth;
@@ -31,6 +42,7 @@
             canvas.onclick = function () {
                 console.log('onclick');
             };
+            // 事件代理
         </script>
     </body>
 </html>
