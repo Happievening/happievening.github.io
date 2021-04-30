@@ -1,62 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
-        <title>Canvas</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
-    <body>
-        Happi的画板
-        <nav>
-            当前画笔颜色：
-            <ul>
-                <li id="currentColor"></li>
-            </ul>
-            <div class="paletteBar">
-                <ul id="palette">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </div>
-            <aside id="currentDevice">当前设备类型：</aside>
-        </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Canvas</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="canvas" width="100" height="100"></canvas>
+    <script>
+      let canvas = document.getElementById("canvas");
+      let ctx = canvas.getContext("2d");
+      canvas.width = document.documentElement.clientWidth;
+      canvas.height = document.documentElement.clientHeight;
+      ctx.strokeStyle = "black";
+      ctx.lineWidth = 6;
+      ctx.lineCap = "round";
+      let isPainting = false;
+      let lastX = 0;
+      let lastY = 0;
 
-        <canvas id="mycanvas"></canvas>
-        <script>
-            var userAgent = navigator.userAgent;
+      let isTouchDevice = "ontouchstart" in document.documentElement;
+      let device = navigator.userAgent.match("iPhone|iPad|Android") || null;
+      // console.log(device);
+      device !== null ? (device = `移动端-${device[0]}`) : (device = "桌面端");
+      isTouchDevice ? (touchSupport = `是`) : (touchSupport = `否`);
+      alert(`当前设备类型： ${device}\n是否支持触屏：${touchSupport}`);
+      if (isTouchDevice) {
+        canvas.ontouchstart = (e) => {
+          // console.log(e.clientX, e.clientY);
+          //   console.log(e);
+          isPainting = true;
+          (lastX = e.touches[0].clientX), (lastY = e.touches[0].clientY);
+        };
 
-            var canvas = document.getElementById('mycanvas');
-            console.log(canvas);
-            // canvas.style.width = document.documentElement.clientWidth;
-            // canvas.style.height = document.documentElement.clientHeight;
-            console.log(canvas.width);
-            console.log(canvas.height);
-            console.log(document.documentElement.clientWidth);
-            canvas.onclick = function () {
-                console.log('onclick');
-            };
-            // 事件代理
-            var palette = document.querySelector('#palette');
-            var currentColor = document.querySelector('#currentColor');
-            palette.addEventListener('click', e => {
-                console.log(e.target);
-                // console.log(e.target);
-                currentColor.style.background = e.target.style.background;
-            });
-            //判断是否为移动端
-            var currentDevice = navigator.userAgent.match(/(iphone|ipad|android)/i);
-            document.querySelector('#currentDevice').innerHTML += currentDevice
-                ? '移动端-' + currentDevice[0]
-                : '桌面端';
-        </script>
-    </body>
+        canvas.ontouchmove = (e) => {
+          if (isPainting) {
+            // console.log(e);
+            //   console.log(e.clientX, e.clientY);
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(e.touches[0].clientX, e.touches[0].clientY);
+            (lastX = e.touches[0].clientX), (lastY = e.touches[0].clientY);
+            ctx.stroke();
+          }
+        };
+
+        canvas.ontouchend = () => {
+          isPainting = false;
+        };
+      } else {
+        canvas.onmousedown = (e) => {
+          // console.log(e.clientX, e.clientY);
+          isPainting = true;
+          (lastX = e.clientX), (lastY = e.clientY);
+        };
+
+        canvas.onmouseup = () => {
+          isPainting = false;
+        };
+
+        canvas.onmousemove = (e) => {
+          if (isPainting) {
+            //   console.log(e.clientX, e.clientY);
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(e.clientX, e.clientY);
+            (lastX = e.clientX), (lastY = e.clientY);
+            ctx.stroke();
+          }
+        };
+      }
+    </script>
+  </body>
 </html>
