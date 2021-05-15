@@ -42,7 +42,9 @@
       <li>
         与中国交流学校的交流内容可能有变化，且本科提供交流的专业研究生院不一定提供，各个学校报考方式也不一致，研究生请随时<strong>根据专业</strong>关注学校提供的<strong>最新</strong>信息。
       </li>
-      <li>可以使用搜索功能。输入任意文字显示匹配的记录。</li>
+      <li>
+        可以使用搜索功能。输入任意文字显示匹配的记录; 部分字段可以使用排序功能。
+      </li>
       <div class="row">
         <!-- 表格 -->
         <div class="col-xs-12">
@@ -481,18 +483,22 @@
             pageList: [5, 10, 20], //可供选择的每页的行数（*）
             sidePagination: "client", //分页方式：client客户端分页，server服务端分页（*）
             search: true, //是否显示表格搜索，此搜索是客户端搜索，不会进服务端
-            sortable: true, //是否启用排序
             sortOrder: "desc", //排序方式
             height: getDocumentElementHeight(),
             //【设置列】
             columns: [
               { field: "id", title: "编号", width: 80 },
               { field: "name", title: "大学名" },
-              { field: "place", title: "所在地", width: 80 },
-              { field: "type", title: "国公私立", width: 50 },
-              { field: "qs2021", title: "QS2021", width: 150 },
-              { field: "times", title: "THE2021", width: 200 },
-              { field: "hensa", title: "学部偏差值", width: 100 },
+              { field: "place", title: "所在地", width: 80, sortable: true },
+              { field: "type", title: "国公私立", width: 50, sortable: true },
+              { field: "qs2021", title: "QS2021", width: 150, sortable: true },
+              { field: "times", title: "THE2021", width: 200, sortable: true },
+              {
+                field: "hensa",
+                title: "学部偏差值",
+                width: 100,
+                sortable: true,
+              },
               { field: "schools", title: "合作学校" },
               { field: "note", title: "备注" },
             ],
