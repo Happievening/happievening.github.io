@@ -496,20 +496,30 @@
             height: getDocumentElementHeight(),
             //【设置列】
             columns: [
-              { field: "id", title: "编号", width: 80, sortable: true },
-              { field: "name", title: "大学名" },
-              { field: "place", title: "所在地", width: 80, sortable: true },
-              { field: "type", title: "国公私立", width: 50, sortable: true },
-              { field: "qs2021", title: "QS2021", width: 150, sortable: true },
-              { field: "times", title: "THE2021", width: 200, sortable: true },
+              { field: "id", title: "编号", width: "2%", sortable: true },
+              { field: "name", title: "大学名", width: "10%" },
+              { field: "place", title: "所在地", width: "5%", sortable: true },
+              { field: "type", title: "国公私立", width: "50", sortable: true },
+              {
+                field: "qs2021",
+                title: "QS2021",
+                width: "5%",
+                sortable: true,
+              },
+              {
+                field: "times",
+                title: "THE2021",
+                width: "5%",
+                sortable: true,
+              },
               {
                 field: "hensa",
                 title: "学部偏差值",
-                width: 100,
+                width: "3%",
                 sortable: true,
               },
-              { field: "schools", title: "合作学校" },
-              { field: "note", title: "备注" },
+              { field: "schools", title: "合作学校", width: "100%" },
+              { field: "note", title: "备注", width: "30%" },
             ],
           });
         }
