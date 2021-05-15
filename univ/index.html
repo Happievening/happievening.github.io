@@ -296,7 +296,7 @@
           this.obj = obj;
         }
 
-        inint() {
+        init() {
           //---先销毁表格 ---
           this.obj.bootstrapTable("destroy");
           //---初始化表格,动态从服务器加载数据---
@@ -318,8 +318,8 @@
               { field: "id", title: "编号", width: 80 },
               { field: "name", title: "大学名" },
               { field: "place", title: "所在地", width: 80 },
-              { field: "qs2021", title: "QS</br>2021", width: 150 },
-              { field: "times", title: "THE日本大学</br>2021", width: 200 },
+              { field: "qs2021", title: "QS2021", width: 150 },
+              { field: "times", title: "THE2021", width: 200 },
               { field: "hensa", title: "学部偏差值", width: 100 },
               { field: "schools", title: "合作学校" },
               { field: "note", title: "备注" },
@@ -329,7 +329,7 @@
       }
 
       var bstpTable = new BstpTable($("table"));
-      bstpTable.inint();
+      bstpTable.init();
 
       function getDocumentElementHeight() {
         return document.documentElement.clientHeight * 0.8;
