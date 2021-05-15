@@ -1,0 +1,339 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>bootstrap-table</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css"
+    />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
+    <!-- Latest compiled and minified Locales -->
+    <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+  </head>
+  <body>
+    <div class="container" style="margin-top: 100px; width: 80%">
+      <div class="row">
+        <!-- 表格 -->
+        <div class="col-xs-12">
+          <table class="table table-striped table-bordered table-hover"></table>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      let univdata = [
+        {
+          id: "1",
+          name: "国际教养大学",
+          place: "秋田",
+          times: "10",
+          hensa: "67.5",
+          schools: "哈尔滨工业大学 | 吉林大学 | 南京大学 | 南开大学 | 武汉大学",
+          note: "",
+        },
+        {
+          id: "2",
+          name: "东京大学",
+          place: "东京",
+          qs2021: "24",
+          times: "3",
+          hensa: "67.5",
+          schools:
+            "上海交通大学 | 清华大学 | 浙江大学 | 南开大学 | 南京大学 | 复旦大学 | 北京大学",
+          note: "",
+        },
+        {
+          id: "3",
+          name: "东京外国语大学",
+          place: "秋田",
+          times: "20",
+          hensa: "67.5",
+          schools:
+            "上海外国语大学 | 北京语言大学 | 厦门大学 | 内蒙古大学 | 东北师范大学 | 大连外国语大学 | 北京外国语大学 | 北京大学外国语学院 | 宁波大学 | 西安外国语大学 | 香港中文大学 | 香港大学 ",
+          note: "",
+        },
+
+        {
+          id: "4",
+          name: "一桥大学",
+          place: "东京",
+          qs2021: "501-510",
+          times: "16",
+          hensa: "67.5",
+          schools:
+            "上海财经大学 | 北京大学 | 中国人民大学 | 吉林大学 | 清华大学 | 北京师范大学 | 南京大学 | 中国政法大学 | 西南政法大学 | 香港大学 | 香港中文大学 | 复旦大学 | 浙江大学",
+          note: "",
+        },
+        {
+          id: "5",
+          name: "京都大学",
+          place: "京都",
+          qs2021: "38",
+          times: "3",
+          hensa: "67.5",
+          schools:
+            "香港中文大学 | 复旦大学 | 香港理工大学 | 香港科技大学 | 南京大学 | 南开大学 | 北京大学 | 上海交通大学 | 清华大学 | 香港大学 | 武汉大学 | 西安交通大学 | 浙江大学 ",
+          note: "",
+        },
+        {
+          id: "6",
+          name: "筑波大学",
+          place: "茨城",
+          qs2021: "265",
+          times: "9",
+          hensa: "65",
+          schools:
+            "河北農業大学 | 華中師範大学 | 華東師範大学 | 吉林大学 | 湖南大学 | 江南大学 | 香港科技大学 | 香港中文大学 | 四川大学 | 上海外国語大学 | 上海図書館 | 清華大学 | 清華大学 | 西安外国語大学 | 西安交通大学 | 西北農林科技大学 | 青島大学附属医院 | 蘇州大学 | 大連大学 | 大連民族大学 | 中央美術学院 | 中国科学院 | 中国科学技術大学 | 中国原子能科学研究院 | 中国人民大学 | 中国地質大学 | 中国美術学院 | 鄭州大学 | 東北大学 | 東北師範大学 | 同済大学 | 内蒙古農牧業科学院 | 南開大学 | 南京農業大学 | 復旦大学 | 福建師範大学 | 北京師範大学 | 北京大学 | 蘭州大学 | 厦門大学 | 浙江科技学院 | 浙江大学 | 澳門大学",
+          note: "不同学校能交换的专业不同，请参考<a href=http://www.kokuren.tsukuba.ac.jp/GP/gplist.html#a07>这里</a>",
+        },
+        {
+          id: "7",
+          name: "御茶水女子大学",
+          place: "东京",
+          times: "25",
+          hensa: "65",
+          schools:
+            "大连外国语大学 | 北京外国语大学 |北京大学历史学系 | 复旦大学历史学系",
+          note: "仅限女性报考",
+        },
+        {
+          id: "8",
+          name: "东京学艺大学",
+          place: "东京",
+          hensa: "65",
+          schools:
+            "北京師範大学 | 北京外国語大学 | 東北師範大学 | 蘇州大学 | 南京師範大学 | 湖南師範大学 | 華中師範大学 | 上海師範大学 | 華東師範大学",
+        },
+        {
+          id: "9",
+          name: "大阪大学",
+          place: "大阪",
+          qs2021: "72",
+          times: "8",
+          hensa: "65",
+          schools:
+            "湖南大学 | 清華大学 | 大連理工大学 | 同済大学 | 東北大学 | 南京大学 | 北京師範大学 | 上海交通大学 | 深圳大学 | 西安交通大学 | 武漢大学 | 復旦大学 | 北京大学 | 浙江大学",
+        },
+        {
+          id: "10",
+          name: "北海道大学",
+          place: "北海道",
+          qs2021: "139",
+          times: "6",
+          hensa: "62.5",
+          schools:
+            "北京科技大学 | 浙江大学 | 北京大学 | 復旦大学 | 吉林大学 | 南開大学 | 南京大学 | 西安交通大学 | 清華大学 | 東北師範大学 | 四川大学 | 武漢大学 | 大連理工大学 | 北京師範大学 | 蘭州大学 | 東南大学 | 厦門大学 | 上海海洋大学 | 中国海洋大学 | 香港中文大学 | 西北農林科技大学 | 上海交通大学 | 華中科技大学 | 湖南大学 | 香港城市大学 | 中国人民大学 | 中国科学院大学 | 東北大学",
+        },
+        {
+          id: "11",
+          name: "千叶大学",
+          place: "千叶",
+          qs2021: "488",
+          times: "23",
+          hensa: "62.5",
+          schools:
+            "<a href=https://www.chiba-u.ac.jp/global/affiliate/student.html>请参考这里</a>",
+        },
+        {
+          id: "12",
+          name: "横滨市立大学",
+          place: "神奈川",
+          qs2021: "465",
+          times: "36",
+          hensa: "67.5",
+          schools: "上海师范大学 | 北京师范大学　汉语文化学院",
+        },
+        {
+          id: "13",
+          name: "岐阜大学",
+          place: "岐阜",
+          qs2021: "601-650",
+          times: "75",
+          hensa: "62.5",
+          schools:
+            "浙江大学 | 上海同済大学 | 西南交通大学 | 電子科技大学 | 華僑大学 | 吉林大学| 広西大学 | 内蒙古師範大学| 内蒙古大学 | 内蒙古農業大学 | 江南大学",
+        },
+        {
+          id: "14",
+          name: "名古屋大学",
+          place: "爱知",
+          qs2021: "110",
+          times: "7",
+          hensa: "62.5",
+          schools:
+            "南京大学 | 吉林大学 | 華中科技大学 | 清華大学 | 復旦大学 | 西安交通大学 | 浙江大学 | 上海交通大学 | 同済大学 | 東北大学 | 北京大学 | 哈爾濱工業大学 | 中国科学技術大学 | 大連理工大学",
+        },
+        {
+          id: "15",
+          name: "国际教养大学",
+          place: "秋田",
+          qs2021: "200",
+          times: "",
+          hensa: "67.5",
+          schools: "",
+        },
+        {
+          id: "16",
+          name: "国际教养大学",
+          place: "秋田",
+          qs2021: "200",
+          times: "",
+          hensa: "67.5",
+          schools: "",
+        },
+        {
+          id: "17",
+          name: "国际教养大学",
+          place: "秋田",
+          qs2021: "200",
+          times: "",
+          hensa: "67.5",
+          schools: "",
+        },
+        {
+          id: "18",
+          name: "国际教养大学",
+          place: "秋田",
+          qs2021: "200",
+          times: "",
+          hensa: "67.5",
+          schools: "",
+        },
+        {
+          id: "19",
+          name: "国际教养大学",
+          place: "秋田",
+          qs2021: "200",
+          times: "",
+          hensa: "67.5",
+          schools: "",
+        },
+        {
+          id: "20",
+          name: "国际教养大学",
+          place: "秋田",
+          qs2021: "200",
+          times: "",
+          hensa: "67.5",
+          schools: "",
+        },
+        {
+          id: "21",
+          name: "国际教养大学",
+          place: "秋田",
+          qs2021: "200",
+          times: "",
+          hensa: "67.5",
+          schools: "",
+        },
+        {
+          id: "22",
+          name: "国际教养大学",
+          place: "秋田",
+          qs2021: "200",
+          times: "",
+          hensa: "67.5",
+          schools: "",
+        },
+        {
+          id: "23",
+          name: "国际教养大学",
+          place: "秋田",
+          qs2021: "200",
+          times: "",
+          hensa: "67.5",
+          schools: "",
+        },
+        {
+          id: "24",
+          name: "国际教养大学",
+          place: "秋田",
+          qs2021: "200",
+          times: "",
+          hensa: "67.5",
+          schools: "",
+        },
+        {
+          id: "25",
+          name: "国际教养大学",
+          place: "秋田",
+          qs2021: "200",
+          times: "",
+          hensa: "67.5",
+          schools: "",
+        },
+        {
+          id: "26",
+          name: "国际教养大学",
+          place: "秋田",
+          qs2021: "200",
+          times: "",
+          hensa: "67.5",
+          schools: "",
+        },
+        {
+          id: "27",
+          name: "国际教养大学",
+          place: "秋田",
+          qs2021: "200",
+          times: "",
+          hensa: "67.5",
+          schools: "",
+        },
+      ];
+
+      class BstpTable {
+        constructor(obj) {
+          this.obj = obj;
+        }
+
+        inint() {
+          //---先销毁表格 ---
+          this.obj.bootstrapTable("destroy");
+          //---初始化表格,动态从服务器加载数据---
+          this.obj.bootstrapTable({
+            data: univdata,
+            //【其它设置】
+            locale: "zh-CN", //中文支持
+            pagination: true, //是否开启分页（*）
+            pageNumber: 1, //初始化加载第一页，默认第一页
+            pageSize: 10, //每页的记录行数（*）
+            pageList: [5, 10, 20], //可供选择的每页的行数（*）
+            sidePagination: "client", //分页方式：client客户端分页，server服务端分页（*）
+            search: true, //是否显示表格搜索，此搜索是客户端搜索，不会进服务端
+            sortable: true, //是否启用排序
+            sortOrder: "desc", //排序方式
+            height: getDocumentElementHeight(),
+            //【设置列】
+            columns: [
+              { field: "id", title: "编号", width: 80 },
+              { field: "name", title: "大学名" },
+              { field: "place", title: "所在地", width: 80 },
+              { field: "qs2021", title: "QS</br>2021", width: 150 },
+              { field: "times", title: "THE日本大学</br>2021", width: 200 },
+              { field: "hensa", title: "学部偏差值", width: 100 },
+              { field: "schools", title: "合作学校" },
+              { field: "note", title: "备注" },
+            ],
+          });
+        }
+      }
+
+      var bstpTable = new BstpTable($("table"));
+      bstpTable.inint();
+
+      function getDocumentElementHeight() {
+        return document.documentElement.clientHeight * 0.8;
+      }
+    </script>
+  </body>
+</html>
