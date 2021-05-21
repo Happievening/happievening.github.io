@@ -1,4 +1,4 @@
-let string = `/*你好，欢迎来到前端世界！
+let string = `/*你好，欢迎来到前端的世界！
 *我是Happievening，喜欢前端，你呢？
 *让我来添加一点样式进去......
 *我要做一些准备工作：
@@ -24,51 +24,46 @@ body {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    position: absolute;
     box-shadow: 0 0 3px rgba(0,0,0,0.5);
     border:none;
-  }
-  #div1 {
+}
+#div1 {
     background: linear-gradient(90deg, white 0%, white 50%, black 50%, black 100%);
+}
+/*加阴极的眼*/
+#div1::before {
+  width: 100px;
+  height: 100px;
+  /*环形*/
+  background: radial-gradient(circle closest-side, white 37.5%, black 37.5%);
+  position: relative;
+  top: 0%;
+  left: 25%;
+  border-radius: 50%
+}
+/*加阳极的眼*/
+#div1::after {
+  width: 100px;
+  height: 100px;
+  /*环形*/
+  background: radial-gradient(circle closest-side, black 37.5%, white 37.5%);
+  position: relative;
+  top: 0%;
+  left: 25%;
+  border-radius: 50%
+}
+/*定义一个动画*/
+@keyframes rt {
+  from {}to {
+    transform: rotate(360deg)
   }
-  /*加一个小圆*/
-  #div1::before {
-    content: "";
-    display: block;
-    width: 100px;
-    height: 100px;
-    /*弄出一个环形*/
-    background: radial-gradient(circle closest-side, white 37.5%, black 37.5%);
-    position: relative;
-    top: 0%;
-    left: 25%;
-    border-radius: 50%
-  }
-  /*加一个小圆*/
-  #div1::after {
-    content: "";
-    display: block;
-    width: 100px;
-    height: 100px;
-    /*弄出一个环形*/
-    background: radial-gradient(circle closest-side, black 37.5%, white 37.5%);
-    position: relative;
-    top: 0%;
-    left: 25%;
-    border-radius: 50%
-  }
-  /*定义一个动画*/
-  @keyframes rt {
-    from {}to {
-      transform: rotate(360deg)
-    }
-  }
-  /*让太极动起来！*/
-  #div1{
-     animation: rt 10s infinite linear 
-  }
-  /*我的展示到此结束
-  祝你天天开心！*/
+}
+/*让太极动起来！*/
+#div1{
+   animation: rt 10s infinite linear 
+}
+/*我的展示到此结束
+祝你天天开心！*/
 `;
 let n = 0;
 
@@ -95,7 +90,7 @@ let step = function () {
       n++;
       step();
     }
-  }, 50);
+  }, 40);
 };
 
 step();
