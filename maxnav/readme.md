@@ -1,4 +1,10 @@
-# 使用方法
+# Preview
+
+https://happievening.github.io/maxnav/dist/index.html
+
+
+
+# 本地运行
 
 1. 克隆这个repo
 
@@ -15,4 +21,3 @@
 ~~~sh
 yarn build
 ~~~
-
