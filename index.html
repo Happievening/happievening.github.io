@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
-        <style>
-            a {
-                display: block;
-                list-style: none;
-            }
-        </style>
-        <title>Navi</title>
-    </head>
-    <body>
-        123
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/base/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/assets/base/style.css">
+    <title>团子团Family</title>
+</head>
+
+<body>
+    <nav>
+        <div><a href="/index.html"><img src="/assets/base/tuanzidui.png" alt="" width="80px"></a></div>
+    </nav>
+    <main>
+        <section id="main-section">
+
+        </section>
+
+    </main>
+</body>
+<script src="/assets/base/js/lib.js"></script>
+<script>
+    pAJAX({ url: "/assets/base/data/kiji.json" }).then((req, res) => {
+        let req_p = JSON.parse(req)
+        for (let i = 0; i < req_p.length; i++) {
+            const kiji = req_p[i];
+            let string = `<a class="section-list-item" href="${kiji.anchor || "/"}">
+                <div class="kiji-pic"><img src="${kiji.pic !== "" ? kiji.pic : "/assets/base/tuanzidui.png"}" alt=""></div>
+                <div class="kiji-title">
+                    ${kiji.title || "def"}
+                </div>
+                <div class="kiji-date">${kiji.date || "def"}</div>
+                <div class="kiji-info">${kiji.info || "def"}</div>
+            </a>`
+            document.querySelector("#main-section").innerHTML += string
+
+        }
+    })
+
+</script>
+
 </html>
